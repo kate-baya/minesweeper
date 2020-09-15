@@ -8,6 +8,11 @@ body {
   align-items: center;
   justify-content: flex-center;
   flex-direction: column;
+  background-image: url("jurassicPark.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(27, 27, 27);
 }
 
 #message, #notes {
@@ -26,13 +31,13 @@ body {
 }
 
 .board div {
-  color: green;
+  color: white;
   font-size: 2rem;
   width: 75px;
   height: 75px;
-  border: 1px #ccc dotted;
+  border: 1px rgba(0, 0, 0, 0.884) line;
   border-radius: 10%;
-  background-color: white;
+  background-color: rgb(101, 163, 44);
   margin: 3px;
   display: flex;
   align-items: center;
@@ -40,21 +45,22 @@ body {
 }
 
 .board div:hover {
-  background-color: white;
+  background-color: rgba(97, 196, 5, 0.815);
 }
 
 div.mine, div.mine:hover {
-  background: no-repeat center/60% url("images/bomb.svg") crimson;
+  background: no-repeat center/60% url("images/dinosaur.png") rgba(117, 25, 18);
 }
 
 div.hidden {
-  background: #eee;
+  background: rgb(68, 136, 4);
 }
 
 div.hidden:hover {
-  background: #ccc;
+  background: rgba(97, 196, 5, 0.815);
 }
 
 div.marked, div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+  background: no-repeat center/60% url("images/scratch2.png") rgb(1, 26, 19);
 }
+
