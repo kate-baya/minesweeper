@@ -13,6 +13,12 @@ winAudio.src = "cleverGirl_1.wav"
 var loseAudio = new Audio()
 loseAudio.src = "eaten_1.mp3"
 
+var mark = new Audio()
+mark.src = "uncovercell.mp3"
+
+var uncover = new Audio()
+uncover.src = "markcell.mp3"
+
 //easy
 function createBoard() {
   board.cells = []
