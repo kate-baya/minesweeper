@@ -10,8 +10,14 @@
     <div id="message"></div>
     <div id="notes"></div>
     <div class="board"></div>
-    <br>
-    <button id="reset">Start</button>
+    <div class="container">
+    <p id="notes">Select difficulty</p>
+    </div>
+    <span><button class="btn" id="easy" onclick="selectDifficulty(4, 4)" value="On">Easy</button>
+    <button class="btn" id="medium" onclick="selectDifficulty(5, 3)" value="Off">Medium</button>
+    <button class="btn" id="hard" onclick="selectDifficulty(6, 2)" value="Off">Hard</button>
+    </span>
+    
     <script src="minesweeper.js"></script>
   </body>
 </html>

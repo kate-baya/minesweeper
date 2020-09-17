@@ -1,12 +1,45 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
-var cells = []
-var col = 0
-var row = 0
-var hidden = true
+//Difficulty levels
 
-var board = {}
+function onoff(){
+  currentvalue = document.getElementById('onoff').value;
+  if(currentvalue == "Off"){
+    document.getElementById("onoff").value="On";
+  }else{
+    document.getElementById("onoff").value="Off";
+  }
+}
 
+var boardLength = 4
+var booleanNum = 4
+
+function selectDifficulty(difficulty, booleanDifficulty) {
+  boardLength = difficulty
+  booleanNum = booleanDifficulty
+  resetBoard()
+  return boardLength, booleanDifficulty;
+}
+
+function resetBoard () {
+  var boardNode = document.getElementsByClassName("board")[0]
+  boardNode.innerHTML = ""
+  startGame()
+}
+
+function startGame () {
+  createBoard(boardLength)
+  for (var i = 0; i < board.cells.length; i++) {
+    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
+    }
+  document.addEventListener("contextmenu", checkForWin)
+  document.addEventListener("click", checkForWin)
+  // Don't remove this function call: it makes the game work!
+  lib.initBoard()
+
+}
+
+//Audio files
 var winAudio = new Audio()
 winAudio.src = "cleverGirl_1.wav"
 
@@ -19,57 +52,31 @@ mark.src = "uncovercell.mp3"
 var uncover = new Audio()
 uncover.src = "markcell.mp3"
 
-//easy
-function createBoard() {
-  board.cells = []
-  do {
-    var randomNum = Math.floor((Math.random() * 10) + 1)
-    if (randomNum % 4 == 0) {
-      var isMine = true
-      } else isMine = false
+//Global board object
+var board = {}
 
-    board.cells.push({col, row, isMine, hidden});
-    col++
-  } 
-  while (board.cells.length < 4)
-  row = 1
-  col = 0
-  do {
-    var randomNum = Math.floor((Math.random() * 10) + 1)
-    if (randomNum % 4 == 0) {
-      var isMine = true
-      } else isMine = false
 
-    board.cells.push({col, row, isMine, hidden});
-    col++
-  } 
-  while (board.cells.length < 8)
-  row = 2
-  col = 0
-  do {
-    var randomNum = Math.floor((Math.random() * 10) + 1)
-    if (randomNum % 4 == 0) {
-      var isMine = true
-      } else isMine = false
 
-    board.cells.push({col, row, isMine, hidden});
-    col++
-  } 
-  while (board.cells.length < 12)
-  row = 3
-  col = 0
-  do {
-    var randomNum = Math.floor((Math.random() * 10) + 1)
-    if (randomNum % 4 == 0) {
-      var isMine = true
-      } else isMine = false
+function getRandomBoolean (booleanNum){
+  var randomNum = Math.floor((Math.random() * 10) + 1)
+  if (randomNum % booleanNum == 0) {
+    return true
+    } 
+    return false
 
-    board.cells.push({col, row, isMine, hidden});
-    col++
-  } 
-  while (board.cells.length < 16)
-  console.log(board)
 }
+
+function createBoard(boardLength) {
+  board.cells = []
+  var hidden = true
+  for (var row = 0; row < boardLength; row++) {
+    for (var col = 0; col < boardLength; col++) {
+      const isMine = getRandomBoolean(4)
+      board.cells.push({col, row, isMine, hidden})
+    }
+  }
+}
+
 
 // //meduim
 // function createBoard() {
@@ -210,23 +217,7 @@ function createBoard() {
 //   while (board.cells.length < 36)
 // }
 
-function startGame () {
-  createBoard()
-  for (var i = 0; i < board.cells.length; i++) {
-    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
-    }
-  document.addEventListener("contextmenu", checkForWin)
-  document.addEventListener("click", checkForWin)
-  // Don't remove this function call: it makes the game work!
-  lib.initBoard()
 
-}
-
-function resetBoard () {
-  delete board.cells
-  startGame()
-}
-document.getElementById("reset").onclick = resetBoard
 
 // Define this function to look for a win condition:
 //

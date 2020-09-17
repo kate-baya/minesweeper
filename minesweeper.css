@@ -1,7 +1,16 @@
+@font-face {
+  font-family: 'Jurassic Park';
+  src: url('JurassicPark.woff2') format('woff2'),
+      url('JurassicPark.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html, body {
   height: 100%;
-  font-family: 'Open Sans', sans-serif;
-  color: white
+  font-family: 'Jurassic Park';
+  color: rgb(247, 239, 239);
 }
 
 body {
@@ -9,10 +18,10 @@ body {
   align-items: center;
   justify-content: flex-center;
   flex-direction: column;
-  background-image: url("jurassicPark.jpg");
+  background-image: url("background.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 130%;
   background-color: rgb(27, 27, 27);
 }
 
@@ -20,10 +29,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  letter-spacing: 3px;
+}
+
+#notes {
+  font-size: 3rem;
 }
 
 #message {
-  font-size: 1.5rem;
+  margin-top: 5px!important;
+  font-size: 8rem;
 }
 
 .board {
@@ -36,7 +51,7 @@ body {
   font-size: 2rem;
   width: 75px;
   height: 75px;
-  border: 1px rgba(0, 0, 0, 0.884) line;
+  border: 6px rgba(0, 0, 0, 0.884) line;
   border-radius: 10%;
   background-color: rgb(101, 163, 44);
   margin: 3px;
@@ -65,3 +80,29 @@ div.marked, div.marked:hover {
   background: no-repeat center/60% url("images/scratch2.png") rgb(1, 26, 19);
 }
 
+.on  { background:blue; }
+      .off { background:rgb(231, 245, 227); }
+
+      p {
+        display: block;
+        margin-block-start: .15em;
+        margin-block-end: .15em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+
+.container {
+  background-color: rgb(27, 27, 27);
+  padding-left: 1.7%;
+  padding-right: 1.7%;
+  outline: yellow;
+  outline-style: solid;
+  outline-width: 4px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}    
+
+.btn {
+  margin-left: 8px;
+  margin-right: 8px;
+}
